@@ -33,12 +33,12 @@ flist_b3050 = cms.untracked.vstring();
 flist_b5070 = cms.untracked.vstring();
 
 for i in range(1, 212):
-    flist_t1030.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T1030/160601_132629/0000/Q2_{i}.root'.format(i))
-    flist_t3050.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T3050/160601_132648/0000/Q2_{i}.root'.format(i))
-    flist_t5070.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T5070/160601_132708/0000/Q2_{i}.root'.format(i))
-    flist_b1030.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B1030/160601_132639/0000/Q2_{i}.root'.format(i))
-    flist_b3050.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B3050/160601_132658/0000/Q2_{i}.root'.format(i))
-    flist_b5070.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B5070/160601_132719/0000/Q2_{i}.root'.format(i))
+    flist_t1030.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T1030/160601_132629/0000/Q2_{0}.root'.format(i))
+    flist_t3050.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T3050/160601_132648/0000/Q2_{0}.root'.format(i))
+    flist_t5070.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T5070/160601_132708/0000/Q2_{0}.root'.format(i))
+    flist_b1030.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B1030/160601_132639/0000/Q2_{0}.root'.format(i))
+    flist_b3050.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B3050/160601_132658/0000/Q2_{0}.root'.format(i))
+    flist_b5070.append('file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_B5070/160601_132719/0000/Q2_{0}.root'.format(i))
 
 process.source = cms.Source("PoolSource",
 #        fileNames = cms.untracked.vstring("file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T1030/160601_132629/0000/Q2_100.root"),
