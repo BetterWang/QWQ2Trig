@@ -26,7 +26,7 @@ process.options = cms.untracked.PSet(
 #
 
 process.source = cms.Source("PoolSource",
-        fileNames = cms.untracked.vstring("file:FullTrack_1.root")
+        fileNames = cms.untracked.vstring("file:/afs/cern.ch/user/q/qwang/eos/cms/store/group/phys_heavyions/qwang/PbPb2015/HIFlowCorr/crab_HIFlowCorr_Q2Debug_T1030/160601_132629/0000/Q2_100.root")
 )
 
 

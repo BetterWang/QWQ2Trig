@@ -42,8 +42,8 @@ class QWQ2Trig : public edm::EDAnalyzer {
 		TH1D *hQ2_v1, *hQ2_v2, *hQ2_v3;
 };
 
-QWQ2Trig::QWQ2Trig(const edm::ParameterSet& pset) :
-	epToken_( consumes<reco::EvtPlaneCollection>(iConfig.getUntrackedParameter<edm::InputTag>("epSrc", string("hiEvtPlane") )) ),
+QWQ2Trig::QWQ2Trig(const edm::ParameterSet& iConfig) :
+	epToken_( consumes<reco::EvtPlaneCollection>(iConfig.getUntrackedParameter<edm::InputTag>("epSrc", std::string("hiEvtPlane") )) ),
 	centralityToken_( consumes<int>(iConfig.getParameter<edm::InputTag>("centrality_")) )
 {
 	edm::Service<TFileService> fs;
@@ -55,6 +55,11 @@ QWQ2Trig::QWQ2Trig(const edm::ParameterSet& pset) :
 	hQ2_v2 = fs->make<TH1D>("hQ2_v2", "hQ2_v2", 1000, 0.0, 1.0);
 	hQ2_v3 = fs->make<TH1D>("hQ2_v3", "hQ2_v3", 1000, 0.0, 1.0);
 
+}
+
+void QWQ2Trig::fillDescriptions(edm::ConfigurationDescriptions& descriptions)
+{
+	return;
 }
 
 QWQ2Trig::~QWQ2Trig()
@@ -73,14 +78,13 @@ void QWQ2Trig::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 	iEvent.getByToken(epToken_, epCollection);
 	const reco::EvtPlaneCollection * ep = epCollection.product();
 	if ( ! epCollection.isValid() ) return;
-	const reco::EvtPlaneCollection * ep = epCollection.product();
 
 	double q2 = (*ep)[8].vn(0);
 
 	if ( RunId < 262777 ) {
 		hCent_v1->Fill(bin);
 		hQ2_v1->Fill(q2);
-	} else ( RunId < 263212 ) {
+	} else if ( RunId < 263212 ) {
 		hCent_v2->Fill(bin);
 		hQ2_v2->Fill(q2);
 	} else {

@@ -1,0 +1,7 @@
+bin/
+PbPb2015
+test/*
+!test/qw*.py
+!test/crab_*.py
+!test/run*.sh
+*.pyc
