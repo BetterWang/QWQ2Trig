@@ -51,9 +51,9 @@ QWQ2Trig::QWQ2Trig(const edm::ParameterSet& pset) :
 	hCent_v1 = fs->make<TH1D>("hCent_v1", "hCent_v1", 200, 0, 200);
 	hCent_v2 = fs->make<TH1D>("hCent_v2", "hCent_v2", 200, 0, 200);
 	hCent_v3 = fs->make<TH1D>("hCent_v3", "hCent_v3", 200, 0, 200);
-	hQ2_v1 = fs->make<TH1D>("hQ2_v1", "hQ2_v1", 500, 0, 0.5);
-	hQ2_v2 = fs->make<TH1D>("hQ2_v2", "hQ2_v2", 500, 0, 0.5);
-	hQ2_v3 = fs->make<TH1D>("hQ2_v3", "hQ2_v3", 500, 0, 0.5);
+	hQ2_v1 = fs->make<TH1D>("hQ2_v1", "hQ2_v1", 1000, 0.0, 1.0);
+	hQ2_v2 = fs->make<TH1D>("hQ2_v2", "hQ2_v2", 1000, 0.0, 1.0);
+	hQ2_v3 = fs->make<TH1D>("hQ2_v3", "hQ2_v3", 1000, 0.0, 1.0);
 
 }
 
@@ -75,12 +75,17 @@ void QWQ2Trig::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 	if ( ! epCollection.isValid() ) return;
 	const reco::EvtPlaneCollection * ep = epCollection.product();
 
+	double q2 = (*ep)[8].vn(0);
+
 	if ( RunId < 262777 ) {
 		hCent_v1->Fill(bin);
+		hQ2_v1->Fill(q2);
 	} else ( RunId < 263212 ) {
 		hCent_v2->Fill(bin);
+		hQ2_v2->Fill(q2);
 	} else {
 		hCent_v3->Fill(bin);
+		hQ2_v3->Fill(q2);
 	}
 }
 
