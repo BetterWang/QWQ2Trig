@@ -1,4 +1,5 @@
 import FWCore.ParameterSet.Config as cms
+import sys
 
 process = cms.Process("Q2Trig")
 
@@ -45,13 +46,35 @@ process.source = cms.Source("PoolSource",
         fileNames = flist_t1030,
 )
 
+process.TFileService = cms.Service("TFileService",
+    fileName = cms.string('q2trig.root')
+)
+
 
 process.Q2Trig = cms.EDAnalyzer('QWQ2Trig'
     , centrality_ = cms.InputTag("centralityBin", "HFtowers")
 )
 
-process.TFileService = cms.Service("TFileService",
-    fileName = cms.string('q2trig.root')
-)
+if len(sys.argv)>2:
+    if sys.argv[2] == 't1030':
+        process.source.fileNames = flist_t1030
+        process.TFileService.fileName = cms.string('q2trig_t1030.root')
+    if sys.argv[2] == 't3050':
+        process.source.fileNames = flist_t3050
+        process.TFileService.fileName = cms.string('q2trig_t3050.root')
+    if sys.argv[2] == 't5070':
+        process.source.fileNames = flist_t5070
+        process.TFileService.fileName = cms.string('q2trig_t5070.root')
+    if sys.argv[2] == 'b1030':
+        process.source.fileNames = flist_b1030
+        process.TFileService.fileName = cms.string('q2trig_b1030.root')
+    if sys.argv[2] == 'b3050':
+        process.source.fileNames = flist_b3050
+        process.TFileService.fileName = cms.string('q2trig_b3050.root')
+    if sys.argv[2] == 'b5070':
+        process.source.fileNames = flist_b5070
+        process.TFileService.fileName = cms.string('q2trig_b5070.root')
+
+
 
 process.p = cms.Path(process.Q2Trig)
